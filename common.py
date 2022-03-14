@@ -35,3 +35,4 @@ def setup_args():
 def program_start():
     args = setup_args()
     setup_logging(args.verbose)
+    return new_client()
