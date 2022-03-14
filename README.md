@@ -12,4 +12,8 @@ $ list_domains.py
 lists.a.com
 lists.b.com
 lists.c.com
+$ list_lists.py
+thislist@lists.a.com
+thatlist@lists.b.com
+testlist@lists.b.com
 ```
