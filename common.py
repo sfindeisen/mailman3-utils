@@ -5,6 +5,7 @@ import sys
 
 import mailmanclient
 
+# Creates and returns new Mailman3 REST client.
 def new_client():
     client_pass = os.getenv('MAILMAN_REST_API_PASS')
     if client_pass:
@@ -14,6 +15,7 @@ def new_client():
     else:
         raise Exception("Environment variable MAILMAN_REST_API_PASS not set!")
 
+# Configures the logging subsystem.
 def setup_logging(verbose=False):
     log_format = '[{asctime}] {levelname:8} {threadName:<14} {message}'
     logging.basicConfig(stream=sys.stderr, level=(logging.DEBUG if verbose else logging.INFO), format=log_format, style='{')
@@ -32,6 +34,7 @@ def setup_args():
     args = parser.parse_args()
     return args
 
+# Program start for the simple case.
 def program_start():
     args = setup_args()
     setup_logging(args.verbose)
