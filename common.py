@@ -28,6 +28,7 @@ class ArgMod(enum.Enum):
 # Given a Mailman3 list object, tweaks its settings in an opinionated way!
 def apply_list_settings(llist):
     llist.settings['admin_notify_mchanges'] = True
+    llist.settings['collapse_alternatives'] = True
     llist.settings.save()
 
 def fetch_domain(client, domain):
