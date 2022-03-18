@@ -11,6 +11,7 @@ if __name__ == "__main__":
     # setup client
     client = common.new_client()
 
-    styles = client.styles['style_names']
+    # list styles
+    styles = common.fetch_styles(client)
     for s in styles:
         print(s)
