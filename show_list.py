@@ -15,13 +15,8 @@ if __name__ == "__main__":
 
     # setup client
     client = common.new_client()
-    lists  = client.lists
-    lists  = list(filter(lambda x : (fqdn_listname == x.fqdn_listname), lists))
 
-    if lists:
-        llist = lists[0]
-    else:
-        raise Exception("List not found: {}".format(fqdn_listname))
-
+    # fetch list
+    llist  = common.fetch_list(client, fqdn_listname)
     for attr in sorted(llist.settings):
         print("{}: {}".format(attr, llist.settings[attr]))

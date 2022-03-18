@@ -38,6 +38,15 @@ def fetch_domain(client, domain):
     else:
         raise Exception("Domain not found: {}".format(domain))
 
+def fetch_list(client, fqdn_listname):
+    lists  = client.lists
+    lists  = list(filter(lambda x : (fqdn_listname == x.fqdn_listname), lists))
+
+    if lists:
+        return lists[0]
+    else:
+        raise Exception("List not found: {}".format(fqdn_listname))
+
 def fetch_styles(client):
     return set(client.styles['style_names'])
 
