@@ -65,9 +65,3 @@ def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN):
     # Parse command line arguments
     args = parser.parse_args()
     return args
-
-# Program start for the simple case.
-def program_start():
-    args = setup_args()
-    setup_logging(args.verbose)
-    return new_client()
