@@ -6,7 +6,7 @@ import common
 
 if __name__ == "__main__":
 
-    args = common.setup_args(domain=True, llist=True)
+    args = common.setup_args(domain=common.ArgMod.REQUIRED, llist=common.ArgMod.REQUIRED)
     common.setup_logging(args.verbose)
 
     fqdn_listname = "{}@{}".format(args.llist, args.domain)
