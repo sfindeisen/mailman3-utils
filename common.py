@@ -20,9 +20,18 @@ def setup_logging(verbose=False):
     log_format = '[{asctime}] {levelname:8} {threadName:<14} {message}'
     logging.basicConfig(stream=sys.stderr, level=(logging.DEBUG if verbose else logging.INFO), format=log_format, style='{')
 
-def setup_args():
+def setup_args(domain=False, llist=False):
     parser = argparse.ArgumentParser(
         add_help=True, allow_abbrev=False, epilog="""This program comes with ABSOLUTELY NO WARRANTY.""")
+
+    if domain:
+        parser.add_argument("-d", "--domain",
+                            required=True)
+    if llist:
+        parser.add_argument("-l", "--list",
+                            required=True,
+                            dest="llist",
+                            help="list name (without the domain)")
 
     parser.add_argument("--verbose",
                         required=False,
