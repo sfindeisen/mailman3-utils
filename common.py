@@ -25,6 +25,11 @@ class ArgMod(enum.Enum):
     def __bool__(self):
         return (not self.is_unknown())
 
+# Given a Mailman3 list object, tweaks its settings in an opinionated way!
+def apply_list_settings(llist):
+    llist.settings['admin_notify_mchanges'] = True
+    llist.settings.save()
+
 def fetch_domain(client, domain):
     doms = client.domains
     doms = list(filter(lambda x: (domain == x.mail_host), doms))

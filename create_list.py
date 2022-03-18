@@ -21,4 +21,5 @@ if __name__ == "__main__":
         raise Exception("Unknown style name: {}".format(args.lstyle))
 
     domain = common.fetch_domain(client, args.domain)
-    domain.create_list(args.llist, style_name=args.lstyle)
+    llist = domain.create_list(args.llist, style_name=args.lstyle)
+    common.apply_list_settings(llist)
