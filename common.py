@@ -38,6 +38,9 @@ def fetch_domain(client, domain):
     else:
         raise Exception("Domain not found: {}".format(domain))
 
+def fetch_styles(client):
+    return set(client.styles['style_names'])
+
 # Creates and returns new Mailman3 REST client.
 def new_client():
     client_pass = os.getenv('MAILMAN_REST_API_PASS')
@@ -53,7 +56,7 @@ def setup_logging(verbose=False):
     log_format = '[{asctime}] {levelname:8} {threadName:<14} {message}'
     logging.basicConfig(stream=sys.stderr, level=(logging.DEBUG if verbose else logging.INFO), format=log_format, style='{')
 
-def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN):
+def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOWN):
     parser = argparse.ArgumentParser(
         add_help=True, allow_abbrev=False, epilog="""This program comes with ABSOLUTELY NO WARRANTY.""")
 
@@ -68,6 +71,12 @@ def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN):
                             required=llist.is_required(),
                             dest="llist",
                             help="list name (without the domain)")
+    if lstyle:
+        parser.add_argument("-s", "--style",
+                            required=lstyle.is_required(),
+                            default="private-default",
+                            dest="lstyle",
+                            help="list style name")
 
     parser.add_argument("--verbose",
                         required=False,
