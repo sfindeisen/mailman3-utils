@@ -4,17 +4,7 @@ import common
 
 def fetch_lists(client, domain):
     if domain:
-        doms = client.domains
-        doms = list(filter(lambda x: (domain == x.mail_host), doms))
-
-        if doms:
-            domc = len(doms)
-            if (2 <= domc):
-                raise Exception("Multiple matches for domain: {}, bailing out".format(domain))
-            else:
-                return doms[0].lists
-        else:
-            raise Exception("Domain not found: {}".format(domain))
+        return common.fetch_domain(client, domain).lists
     else:
         return client.lists
 

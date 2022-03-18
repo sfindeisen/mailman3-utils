@@ -25,6 +25,19 @@ class ArgMod(enum.Enum):
     def __bool__(self):
         return (not self.is_unknown())
 
+def fetch_domain(client, domain):
+    doms = client.domains
+    doms = list(filter(lambda x: (domain == x.mail_host), doms))
+
+    if doms:
+        domc = len(doms)
+        if (2 <= domc):
+            raise Exception("Multiple matches for domain: {}, bailing out".format(domain))
+        else:
+                return doms[0]
+    else:
+        raise Exception("Domain not found: {}".format(domain))
+
 # Creates and returns new Mailman3 REST client.
 def new_client():
     client_pass = os.getenv('MAILMAN_REST_API_PASS')
