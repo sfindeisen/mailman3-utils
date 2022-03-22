@@ -86,7 +86,7 @@ def apply_list_settings(llist, llang='en'):
     # join_address
     # last_post_at
     # leave_address
-    llist.settings['linked_newsgroup']                = None
+    llist.settings['linked_newsgroup']                = ''
     # list_name
     # mail_host
     llist.settings['max_days_to_hold']                =  0
