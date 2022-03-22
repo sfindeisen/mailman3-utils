@@ -26,7 +26,7 @@ class ArgMod(enum.Enum):
         return (not self.is_unknown())
 
 # Given a Mailman3 list object, tweaks its settings in an opinionated way!
-def apply_list_settings(llist, llang='en'):
+def apply_list_settings(llist, llang=None):
     llist.settings['accept_these_nonmembers']    = []
     llist.settings['acceptable_aliases']         = []
     llist.settings['admin_immed_notify']         = True
@@ -105,7 +105,10 @@ def apply_list_settings(llist, llang='en'):
     # post_id
     # posting_address
     # posting_pipeline
-    llist.settings['preferred_language']              = llang
+
+    if llang:
+        llist.settings['preferred_language'] = llang
+
     llist.settings['process_bounces']                 = True
     llist.settings['reject_these_nonmembers']         = []
     llist.settings['reply_goes_to_list']              = 'point_to_list'
@@ -188,7 +191,6 @@ def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOW
     if llang:
         parser.add_argument("--lang",
                             required=llang.is_required(),
-                            default="en",
                             dest="llang",
                             help="list's preferred language")
 
