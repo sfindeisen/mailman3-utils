@@ -36,8 +36,8 @@ def apply_list_settings(llist):
     llist.settings['allow_list_posts']           = True
     llist.settings['anonymous_list']             = False
     llist.settings['archive_policy']             = 'private'
-    llist.settings['collapse_alternatives']      = True
     llist.settings['archive_rendering_mode']     = 'text'
+
     llist.settings['autorespond_owner']          = 'none'
     llist.settings['autorespond_postings']       = 'none'
     llist.settings['autorespond_requests']       = 'none'
@@ -45,6 +45,81 @@ def apply_list_settings(llist):
     llist.settings['autoresponse_owner_text']    = ''
     llist.settings['autoresponse_postings_text'] = ''
     llist.settings['autoresponse_request_text']  = ''
+
+    llist.settings['bounce_info_stale_after']                   = '7d'
+    llist.settings['bounce_notify_owner_on_disable']            = True
+    llist.settings['bounce_notify_owner_on_removal']            = True
+    llist.settings['bounce_score_threshold']                    = 5
+    llist.settings['bounce_you_are_disabled_warnings']          = 3
+    llist.settings['bounce_you_are_disabled_warnings_interval'] = '7d'
+    # bounces_address
+
+    llist.settings['collapse_alternatives']      = False
+    llist.settings['convert_html_to_plaintext']  = False
+    llist.settings['default_member_action']      = 'defer'
+    llist.settings['default_nonmember_action']   = 'reject'
+    llist.settings['description']                = llist.list_name
+
+    llist.settings['digest_send_periodic']     = True
+    llist.settings['digest_size_threshold']    = 100
+    llist.settings['digest_volume_frequency']  = 'monthly'
+    llist.settings['digests_enabled']          = True
+
+    llist.settings['discard_these_nonmembers']        = []
+    llist.settings['display_name']                    = llist.list_name
+    llist.settings['dmarc_mitigate_action']           = 'munge_from'
+    llist.settings['dmarc_mitigate_unconditionally']  = False
+    # dmarc_moderation_notice
+    # dmarc_wrapped_message_text
+    llist.settings['emergency']                       = False
+    llist.settings['filter_action']                   = 'reject'
+    llist.settings['filter_content']                  = False
+    llist.settings['filter_extensions']               = None
+    llist.settings['filter_types']                    = None
+    llist.settings['first_strip_reply_to']            = False    # TODO : check how it works
+    llist.settings['forward_unrecognized_bounces_to'] = 'administrators'
+    llist.settings['gateway_to_mail']                 = False
+    llist.settings['gateway_to_news']                 = False
+    # hold_these_nonmembers
+    llist.settings['include_rfc2369_headers']         = True
+    # info
+    # join_address
+    # last_post_at
+    # leave_address
+    llist.settings['linked_newsgroup']                = None
+    # list_name
+    # mail_host
+    llist.settings['max_days_to_hold']                =  0
+    llist.settings['max_message_size']                = 40
+    llist.settings['max_num_recipients']              = 10
+    llist.settings['member_roster_visibility']        = 'moderators'
+    # moderator_password
+    llist.settings['newsgroup_moderation']            = 'none'
+    # next_digest_number
+    llist.settings['nntp_prefix_subject_too']         = False
+    # no_reply_address
+    # owner_address
+    llist.settings['pass_extensions']                 = None
+    llist.settings['pass_types']                      = None
+    llist.settings['personalize']                     = 'none'
+    # post_id
+    # posting_address
+    # posting_pipeline
+    # TODO : preferred_language
+    llist.settings['process_bounces']                 = True
+    llist.settings['reject_these_nonmembers']         = None
+    llist.settings['reply_goes_to_list']              = 'point_to_list'
+    llist.settings['reply_to_address']                = None
+    # request_address
+    llist.settings['require_explicit_destination']    = True
+    llist.settings['respond_to_post_requests']        = False
+    llist.settings['send_goodbye_message']            = True
+    llist.settings['send_welcome_message']            = True
+    llist.settings['subject_prefix']                  = '[{}] '.format(llist.list_name)
+    llist.settings['subscription_policy']             = 'confirm_then_moderate'
+    llist.settings['unsubscription_policy']           = 'confirm'
+    # usenet_watermark
+    # volume
 
     # save the new settings
     llist.settings.save()
