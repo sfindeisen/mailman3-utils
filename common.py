@@ -74,8 +74,8 @@ def apply_list_settings(llist):
     llist.settings['emergency']                       = False
     llist.settings['filter_action']                   = 'reject'
     llist.settings['filter_content']                  = False
-    llist.settings['filter_extensions']               = None
-    llist.settings['filter_types']                    = None
+    llist.settings['filter_extensions']               = []
+    llist.settings['filter_types']                    = []
     llist.settings['first_strip_reply_to']            = False    # TODO : check how it works
     llist.settings['forward_unrecognized_bounces_to'] = 'administrators'
     llist.settings['gateway_to_mail']                 = False
@@ -99,15 +99,15 @@ def apply_list_settings(llist):
     llist.settings['nntp_prefix_subject_too']         = False
     # no_reply_address
     # owner_address
-    llist.settings['pass_extensions']                 = None
-    llist.settings['pass_types']                      = None
+    llist.settings['pass_extensions']                 = []
+    llist.settings['pass_types']                      = []
     llist.settings['personalize']                     = 'none'
     # post_id
     # posting_address
     # posting_pipeline
     # TODO : preferred_language
     llist.settings['process_bounces']                 = True
-    llist.settings['reject_these_nonmembers']         = None
+    llist.settings['reject_these_nonmembers']         = []
     llist.settings['reply_goes_to_list']              = 'point_to_list'
     llist.settings['reply_to_address']                = None
     # request_address
