@@ -27,8 +27,26 @@ class ArgMod(enum.Enum):
 
 # Given a Mailman3 list object, tweaks its settings in an opinionated way!
 def apply_list_settings(llist):
-    llist.settings['admin_notify_mchanges'] = True
-    llist.settings['collapse_alternatives'] = True
+    llist.settings['accept_these_nonmembers']    = []
+    llist.settings['acceptable_aliases']         = []
+    llist.settings['admin_immed_notify']         = True
+    llist.settings['admin_notify_mchanges']      = True
+    llist.settings['administrivia']              = True
+    llist.settings['advertised']                 = True
+    llist.settings['allow_list_posts']           = True
+    llist.settings['anonymous_list']             = False
+    llist.settings['archive_policy']             = 'private'
+    llist.settings['collapse_alternatives']      = True
+    llist.settings['archive_rendering_mode']     = 'text'
+    llist.settings['autorespond_owner']          = 'none'
+    llist.settings['autorespond_postings']       = 'none'
+    llist.settings['autorespond_requests']       = 'none'
+    llist.settings['autoresponse_grace_period']  = '90d'
+    llist.settings['autoresponse_owner_text']    = ''
+    llist.settings['autoresponse_postings_text'] = ''
+    llist.settings['autoresponse_request_text']  = ''
+
+    # save the new settings
     llist.settings.save()
 
 def fetch_domain(client, domain):
