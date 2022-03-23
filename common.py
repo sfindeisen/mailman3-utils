@@ -26,7 +26,7 @@ class ArgMod(enum.Enum):
         return (not self.is_unknown())
 
 # Given a Mailman3 list object, tweaks its settings in an opinionated way!
-def apply_list_settings(llist, llang=None):
+def apply_list_settings(llist, llang=None, ldesc=None):
     llist.settings['accept_these_nonmembers']    = []
     llist.settings['acceptable_aliases']         = []
     llist.settings['admin_immed_notify']         = True
@@ -82,7 +82,10 @@ def apply_list_settings(llist, llang=None):
     llist.settings['gateway_to_news']                 = False
     # hold_these_nonmembers
     llist.settings['include_rfc2369_headers']         = True
-    # info
+
+    if ldesc:
+        llist.settings['info'] = ldesc
+
     # join_address
     # last_post_at
     # leave_address
@@ -167,7 +170,7 @@ def setup_logging(verbose=False):
     log_format = '[{asctime}] {levelname:8} {threadName:<14} {message}'
     logging.basicConfig(stream=sys.stderr, level=(logging.DEBUG if verbose else logging.INFO), format=log_format, style='{')
 
-def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOWN, llang=ArgMod.UNKNOWN):
+def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOWN, llang=ArgMod.UNKNOWN, ldesc=ArgMod.UNKNOWN):
     parser = argparse.ArgumentParser(
         add_help=True, allow_abbrev=False, epilog="""This program comes with ABSOLUTELY NO WARRANTY.""")
 
@@ -193,6 +196,11 @@ def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOW
                             required=llang.is_required(),
                             dest="llang",
                             help="list's preferred language")
+    if ldesc:
+        parser.add_argument("--desc",
+                            required=ldesc.is_required(),
+                            dest="ldesc",
+                            help="list's description")
 
     parser.add_argument("--verbose",
                         required=False,

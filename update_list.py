@@ -7,7 +7,12 @@ import common
 if __name__ == "__main__":
 
     # setup args and logging
-    args = common.setup_args(domain=common.ArgMod.REQUIRED, llist=common.ArgMod.REQUIRED, llang=common.ArgMod.OPTIONAL)
+    args = common.setup_args(
+        domain=common.ArgMod.REQUIRED,
+        llist=common.ArgMod.REQUIRED,
+        llang=common.ArgMod.OPTIONAL,
+        ldesc=common.ArgMod.OPTIONAL
+    )
     common.setup_logging(args.verbose)
 
     fqdn_listname = "{}@{}".format(args.llist, args.domain)
@@ -18,4 +23,4 @@ if __name__ == "__main__":
 
     # fetch list
     llist = common.fetch_list(client, fqdn_listname)
-    common.apply_list_settings(llist, llang=args.llang)
+    common.apply_list_settings(llist, llang=args.llang, ldesc=args.ldesc)
