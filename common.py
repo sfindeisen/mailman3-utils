@@ -118,7 +118,7 @@ def apply_list_settings(llist, llang=None):
     llist.settings['respond_to_post_requests']        = False
     llist.settings['send_goodbye_message']            = True
     llist.settings['send_welcome_message']            = True
-    llist.settings['subject_prefix']                  = '[{}] '.format(llist.list_name)
+    llist.settings['subject_prefix']                  = '[{}]'.format(llist.list_name)
     llist.settings['subscription_policy']             = 'confirm_then_moderate'
     llist.settings['unsubscription_policy']           = 'confirm'
     # usenet_watermark
