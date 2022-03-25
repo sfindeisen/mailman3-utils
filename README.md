@@ -1,6 +1,6 @@
 # GNU Mailman3 utils
 
-Basic utilities for common tasks.
+Lightweight utilities for common tasks.
 
 [create_list.py](create_list.py) and [update_list.py](update_list.py) will apply their own, opinionated set of settings to the list. The other tools are generic.
 
