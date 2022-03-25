@@ -2,7 +2,9 @@
 
 Basic utilities for common tasks.
 
-This implementation is a wrapper around [Mailman Client](https://docs.mailman3.org/projects/mailmanclient/en/latest/).
+[create_list.py](create_list.py) and [update_list.py](update_list.py) will apply their own, opinionated set of settings to the list. The other tools are generic.
+
+This implementation is a thin wrapper around [Mailman Client](https://docs.mailman3.org/projects/mailmanclient/en/latest/).
 
 # Example
 
