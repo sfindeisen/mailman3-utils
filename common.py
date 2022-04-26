@@ -93,7 +93,7 @@ def apply_list_settings(llist, llang=None, ldesc=None):
     # list_name
     # mail_host
     llist.settings['max_days_to_hold']                =  0
-    llist.settings['max_message_size']                = 40
+    llist.settings['max_message_size']                = 100
     llist.settings['max_num_recipients']              = 10
     llist.settings['member_roster_visibility']        = 'moderators'
     # moderator_password
