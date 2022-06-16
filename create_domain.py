@@ -16,3 +16,4 @@ if __name__ == "__main__":
 
     # create domain
     client.create_domain(args.domain)
+    logging.warning("Remember to create and link the Django site! In your browser go to: /admin/sites/site/")
