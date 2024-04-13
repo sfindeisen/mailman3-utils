@@ -159,7 +159,7 @@ def fetch_styles(client):
 def new_client():
     client_pass = os.getenv('MAILMAN_REST_API_PASS')
     if client_pass:
-        client = mailmanclient.Client('http://localhost:8001/3.1', 'restadmin', client_pass)
+        client = mailmanclient.Client('http://localhost:8001/3.1', name='restadmin', password=client_pass)
         logging.debug('Mailman client: {}'.format(client))
         return client
     else:
