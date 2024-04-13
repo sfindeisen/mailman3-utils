@@ -1,0 +1,3 @@
+--
+Wypisz się: ${short_listname}-leave@${domain}
+Zarządzaj swoją subskrypcją: ${request_email} lub https://${domain}/

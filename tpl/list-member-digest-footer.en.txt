@@ -1,0 +1,3 @@
+--
+Unsubscribe: ${short_listname}-leave@${domain}
+Manage your subscription: ${request_email} or https://${domain}/
