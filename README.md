@@ -8,7 +8,7 @@ This implementation is a thin wrapper around [Mailman Client](https://docs.mailm
 
 # How to run
 
-First, extract `admin_pass` for your site from the configuration file. For example:
+First, extract `admin_pass` for your site from the configuration file and set `MAILMAN_REST_API_PASS` environment variable. For example:
 
 ```shell
 $ grep admin_pass /etc/mailman3/mailman.cfg
