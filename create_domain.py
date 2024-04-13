@@ -16,4 +16,4 @@ if __name__ == "__main__":
 
     # create domain
     client.create_domain(args.domain)
-    logging.warning("Remember to create and link the Django site! In your browser go to: /admin/sites/site/")
+    logging.warning("Remember to (create and) link the Web Host aka Django site! In your web browser login to Postorius and then go to: /admin/sites/site/ . Then remember to configure the new Web Host in /etc/mailman3/nginx.conf (or similar).")
