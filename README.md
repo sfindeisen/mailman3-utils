@@ -6,10 +6,18 @@ Lightweight utilities for common tasks.
 
 This implementation is a thin wrapper around [Mailman Client](https://docs.mailman3.org/projects/mailmanclient/en/latest/).
 
-# Example
+# How to run
+
+First, extract `admin_pass` for your site from the configuration file. For example:
 
 ```shell
+$ grep admin_pass /etc/mailman3/mailman.cfg
 $ export MAILMAN_REST_API_PASS=xxx
+```
+
+Then run the scripts:
+
+```shell
 $ list_domains.py
 lists.a.com
 lists.b.com
