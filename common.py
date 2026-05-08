@@ -57,7 +57,7 @@ def apply_list_settings(llist, llang=None, ldesc=None):
     llist.settings['collapse_alternatives']      = False
     llist.settings['convert_html_to_plaintext']  = False
     llist.settings['default_member_action']      = 'defer'
-    llist.settings['default_nonmember_action']   = 'reject'
+    llist.settings['default_nonmember_action']   = 'discard'
     llist.settings['description']                = llist.list_name
 
     llist.settings['digest_send_periodic']     = True
@@ -122,7 +122,7 @@ def apply_list_settings(llist, llang=None, ldesc=None):
     llist.settings['send_goodbye_message']            = True
     llist.settings['send_welcome_message']            = True
     llist.settings['subject_prefix']                  = '[{}] '.format(llist.list_name)
-    llist.settings['subscription_policy']             = 'confirm_then_moderate'
+    llist.settings['subscription_policy']             = 'moderate'
     llist.settings['unsubscription_policy']           = 'confirm'
     # usenet_watermark
     # volume
