@@ -174,7 +174,8 @@ def setup_logging(verbose=False):
     log_format = '[{asctime}] {levelname:8} {threadName:<14} {message}'
     logging.basicConfig(stream=sys.stderr, level=(logging.DEBUG if verbose else logging.INFO), format=log_format, style='{')
 
-def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOWN, llang=ArgMod.UNKNOWN, ldesc=ArgMod.UNKNOWN):
+def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOWN, llang=ArgMod.UNKNOWN, ldesc=ArgMod.UNKNOWN,
+               memail=ArgMod.UNKNOWN, mname=ArgMod.UNKNOWN, mdelivery=ArgMod.UNKNOWN, minvite=ArgMod.UNKNOWN, mwelcome=ArgMod.UNKNOWN):
     parser = argparse.ArgumentParser(
         add_help=True, allow_abbrev=False, epilog="""This program comes with ABSOLUTELY NO WARRANTY.""")
 
@@ -205,6 +206,33 @@ def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOW
                             required=ldesc.is_required(),
                             dest="ldesc",
                             help="list's description")
+    if memail:
+        parser.add_argument("-e", "--email",
+                            required=memail.is_required(),
+                            dest="memail",
+                            help="member's email address")
+    if mname:
+        parser.add_argument("--name",
+                            required=mname.is_required(),
+                            dest="mname",
+                            help="member's display name (ignored if Mailman already knows the address)")
+    if mdelivery:
+        parser.add_argument("--delivery-mode",
+                            required=mdelivery.is_required(),
+                            choices=["regular", "plaintext_digests", "mime_digests", "summary_digests"],
+                            dest="mdelivery",
+                            help="member's delivery mode (default: the address's own preference, normally regular)")
+    if minvite:
+        parser.add_argument("--invite",
+                            action="store_true",
+                            dest="minvite",
+                            help="email an invitation and subscribe only once it is accepted (default: subscribe right away)")
+    if mwelcome:
+        parser.add_argument("--no-welcome",
+                            action="store_const",
+                            const=False,
+                            dest="mwelcome",
+                            help="do not send the welcome message (default: as set for the list)")
 
     parser.add_argument("--verbose",
                         required=False,
