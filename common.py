@@ -26,9 +26,13 @@ class ArgMod(enum.Enum):
         return (not self.is_unknown())
 
 # Given a Mailman3 list object, tweaks its settings in an opinionated way!
+#
+# Empty values are written as '' rather than [] or None: mailmanclient
+# form-encodes the PATCH, which silently drops empty lists and turns None
+# into the string 'None'. Mailman core reads '' as an empty list.
 def apply_list_settings(llist, llang=None, ldesc=None):
-    llist.settings['accept_these_nonmembers']    = []
-    llist.settings['acceptable_aliases']         = []
+    llist.settings['accept_these_nonmembers']    = ''
+    llist.settings['acceptable_aliases']         = ''
     llist.settings['admin_immed_notify']         = True
     llist.settings['admin_notify_mchanges']      = True
     llist.settings['administrivia']              = True
@@ -65,7 +69,7 @@ def apply_list_settings(llist, llang=None, ldesc=None):
     llist.settings['digest_volume_frequency']  = 'monthly'
     llist.settings['digests_enabled']          = True
 
-    llist.settings['discard_these_nonmembers']        = []
+    llist.settings['discard_these_nonmembers']        = ''
     llist.settings['display_name']                    = llist.list_name
     llist.settings['dmarc_mitigate_action']           = 'munge_from'
     llist.settings['dmarc_mitigate_unconditionally']  = False
@@ -74,8 +78,8 @@ def apply_list_settings(llist, llang=None, ldesc=None):
     llist.settings['emergency']                       = False
     llist.settings['filter_action']                   = 'reject'
     llist.settings['filter_content']                  = False
-    llist.settings['filter_extensions']               = []
-    llist.settings['filter_types']                    = []
+    llist.settings['filter_extensions']               = ''
+    llist.settings['filter_types']                    = ''
     llist.settings['first_strip_reply_to']            = False    # TODO : check how it works
     llist.settings['forward_unrecognized_bounces_to'] = 'administrators'
     llist.settings['gateway_to_mail']                 = False
@@ -102,8 +106,8 @@ def apply_list_settings(llist, llang=None, ldesc=None):
     llist.settings['nntp_prefix_subject_too']         = False
     # no_reply_address
     # owner_address
-    llist.settings['pass_extensions']                 = []
-    llist.settings['pass_types']                      = []
+    llist.settings['pass_extensions']                 = ''
+    llist.settings['pass_types']                      = ''
     llist.settings['personalize']                     = 'none'
     # post_id
     # posting_address
@@ -113,9 +117,9 @@ def apply_list_settings(llist, llang=None, ldesc=None):
         llist.settings['preferred_language'] = llang
 
     llist.settings['process_bounces']                 = True
-    llist.settings['reject_these_nonmembers']         = []
+    llist.settings['reject_these_nonmembers']         = ''
     llist.settings['reply_goes_to_list']              = 'point_to_list'
-    llist.settings['reply_to_address']                = None
+    llist.settings['reply_to_address']                = ''
     # request_address
     llist.settings['require_explicit_destination']    = True
     llist.settings['respond_to_post_requests']        = False
