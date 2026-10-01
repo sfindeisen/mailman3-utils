@@ -175,7 +175,8 @@ def setup_logging(verbose=False):
     logging.basicConfig(stream=sys.stderr, level=(logging.DEBUG if verbose else logging.INFO), format=log_format, style='{')
 
 def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOWN, llang=ArgMod.UNKNOWN, ldesc=ArgMod.UNKNOWN,
-               memail=ArgMod.UNKNOWN, mname=ArgMod.UNKNOWN, mdelivery=ArgMod.UNKNOWN, minvite=ArgMod.UNKNOWN, mwelcome=ArgMod.UNKNOWN):
+               memail=ArgMod.UNKNOWN, mname=ArgMod.UNKNOWN, mdelivery=ArgMod.UNKNOWN, minvite=ArgMod.UNKNOWN, mwelcome=ArgMod.UNKNOWN,
+               wide=ArgMod.UNKNOWN):
     parser = argparse.ArgumentParser(
         add_help=True, allow_abbrev=False, epilog="""This program comes with ABSOLUTELY NO WARRANTY.""")
 
@@ -233,6 +234,10 @@ def setup_args(domain=ArgMod.UNKNOWN, llist=ArgMod.UNKNOWN, lstyle=ArgMod.UNKNOW
                             const=False,
                             dest="mwelcome",
                             help="do not send the welcome message (default: as set for the list)")
+    if wide:
+        parser.add_argument("--wide",
+                            action="store_true",
+                            help="show more member properties (slower: two more requests per member)")
 
     parser.add_argument("--verbose",
                         required=False,
